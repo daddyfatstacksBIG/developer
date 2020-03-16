@@ -1,11 +1,12 @@
 # WalletConsole utility
 
-The *Wallet Core* library comes with an interactive command-line utility, for accessing key- and address management functionality of the library. 
+The _Wallet Core_ library comes with an interactive command-line utility, for
+accessing key- and address management functionality of the library.
 
 ## Quick Start
 
 ```shell
-$ ./build/walletconsole/walletconsole 
+$ ./build/walletconsole/walletconsole
 Wallet-Core Console                          (c) TrustWallet
 Type 'help' for list of commands.
 > help
@@ -21,8 +22,8 @@ Result:  bc1q2kecrqfvzj7l6phet956whxkvathsvsgn7twav
 
 ## Starting
 
-The utility builds together with the library and can be started from: `build/walletconsole/walletconsole` .
-See [build instructions](building.md).
+The utility builds together with the library and can be started from:
+`build/walletconsole/walletconsole` . See [build instructions](building.md).
 
 Walletconsole can be also executed 'off the shelf' using the Docker image:
 
@@ -73,6 +74,7 @@ File methods:
 fileW <fileName> <data> Write data to a (new) binary file.
 fileR <fileName>        Read data from a binary file.
 ```
+
 ## Examples
 
 Here are various sample usages.
@@ -90,7 +92,8 @@ Result:  bc1qvjf93nc80f3fu7j2ehqv6xw6zqa5cny32hl90y
 Written to file 'btcaddr.txt', 21 bytes.
 ```
 
-Create a new private key, derive the public key from it, derive a BTC address from it:
+Create a new private key, derive the public key from it, derive a BTC address
+from it:
 
 ```shell
 > newKey
@@ -110,7 +113,8 @@ Set active coin to: algorand    Use 'coin' to change.  (name: 'algorand'  symbol
 Address is a valid algorand address:  LCSUSBOLNVT6BND6DWWGM4DLVUYJN3PGBT4T7LTCMDMKS7TR7FZAOHOVPE
 ```
 
-Derive private keys using different BIP39 derivation paths, and create address from it:
+Derive private keys using different BIP39 derivation paths, and create address
+from it:
 
 ```shell
 > coin btc

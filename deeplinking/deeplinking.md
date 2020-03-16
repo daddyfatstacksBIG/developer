@@ -1,6 +1,6 @@
 # Deep Linking
 
-# Usage 
+# Usage
 
 ## DApp Browser
 
@@ -19,7 +19,6 @@ https://link.trustwallet.com/open_url?coin_id=60&url=https://compound.finance
 
 https://link.trustwallet.com/activate_coin?coin_id=60
 
-
 ### Redeem Code:
 
 - `code` unique code
@@ -30,7 +29,8 @@ https://link.trustwallet.com/redeem?code=abc123
 ### Send Payment:
 
 - `coin` slip44 index
-- `token_id` Optional. Token identifier (as smart contrtact address or unique token ID)
+- `token_id` Optional. Token identifier (as smart contrtact address or unique
+  token ID)
 - `address` Recipient address
 - `amount` Optional. Payment amount
 - `memo` Optional. Memo
@@ -40,7 +40,7 @@ https://link.trustwallet.com/send?coin=60&token_id=0x6B175474E89094C44Da98b954Ee
 
 ### Add custom token:
 
-- `token_id` token identifier on the blockchain. 
+- `token_id` token identifier on the blockchain.
 
 https://link.trustwallet.com/add_token?token_id=0x514910771af9ca656af840dff83e8264ecf986ca
 
@@ -82,5 +82,3 @@ https://link.trustwallet.com/stake_claim_rewards?coin=118
 #### Definition
 
 slip44 index - https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-
-

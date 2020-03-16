@@ -1,16 +1,21 @@
 # Server-Side Guide
 
-If your server application (most likely on Linux) language supports [FFI](https://en.wikipedia.org/wiki/Foreign_function_interface) to C, it is possible to call wallet core.
+If your server application (most likely on Linux) language supports
+[FFI](https://en.wikipedia.org/wiki/Foreign_function_interface) to C, it is
+possible to call wallet core.
 
 ## Golang
 
-Here is a step by step example of [cgo](https://golang.org/cmd/cgo/), using Wallet Core docker image.
+Here is a step by step example of [cgo](https://golang.org/cmd/cgo/), using
+Wallet Core docker image.
 
-1. Run `docker run -it trustwallet/wallet-core`
-The librabry is already built in this image  (Build instructions [here](building.md))  Note: may not be the most recent version.
+1. Run `docker run -it trustwallet/wallet-core` The librabry is already built in
+   this image (Build instructions [here](building.md)) Note: may not be the most
+   recent version.
 
-2. Install go: `apt-get update && apt-get install golang` 
-(or download from here [go1.13.3](https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz), configure `GOROOT` and append `GOROOT/bin` to `PATH`).
+2. Install go: `apt-get update && apt-get install golang` (or download from here
+   [go1.13.3](https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz), configure
+   `GOROOT` and append `GOROOT/bin` to `PATH`).
 3. Save the sample code below to file called `main.go`
 
 ```go
@@ -86,7 +91,7 @@ func main() {
 ```
 
 4. Compile it by `go build -o main`
-5. Run `./main` and you will see the output below: 
+5. Run `./main` and you will see the output below:
 
 ```shell
 ==> calling wallet core from go
@@ -95,4 +100,6 @@ func main() {
 <== bitcoin public key is valid:  true
 <== bitcoin address:  bc1qw29x4hrt6tahz4jvuhzrq6y5el3spqt499zuay
 ```
-6. You might want to copy and run `main` outside of the docker container, make sure you have `libc++1` and `libc++abi1` installed in your host Ubuntu.
+
+6. You might want to copy and run `main` outside of the docker container, make
+   sure you have `libc++1` and `libc++abi1` installed in your host Ubuntu.

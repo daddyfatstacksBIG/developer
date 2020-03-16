@@ -1,18 +1,20 @@
 # Android Integration Guide
 
-Wallet Core is available on the Android platform, through Java/JNI bindings.
-In this guide we show how to use it.
+Wallet Core is available on the Android platform, through Java/JNI bindings. In
+this guide we show how to use it.
 
-A sample application is available at: https://github.com/trustwallet/wallet-core/tree/master/samples/android .
+A sample application is available at:
+https://github.com/trustwallet/wallet-core/tree/master/samples/android .
 
 ## Prerequisites
 
-* *Android Studio*
-* *Android NDK Support plugin*
+- _Android Studio_
+- _Android NDK Support plugin_
 
 ## Adding Library Dependency
 
 Add this dependency to build.gradle:
+
 ```
 dependencies {
     implementation "com.trustwallet:wallet-core:0.12.31"
@@ -21,8 +23,9 @@ dependencies {
 
 ## Code Examples
 
-In the following sections we show code examples for some common funcions.
-Please refer to the [Wallet Usage Guide](wallet-core-usage.md) for detailed explanations.
+In the following sections we show code examples for some common funcions. Please
+refer to the [Wallet Usage Guide](wallet-core-usage.md) for detailed
+explanations.
 
 ### Wallet Management
 
@@ -44,7 +47,6 @@ val wallet = HDWallet(128, "")
 val wallet = HDWallet("ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal", "")
 ```
 
-
 ### Account Address Derivation
 
 Generating the Default Address for a Coin
@@ -62,18 +64,20 @@ val key = wallet.getKey("m/44\'/60\'/1\'/0/0")   // m/44'/60'/1'/0/0
 val address = CoinType.ETHEREUM.deriveAddress(key)
 ```
 
-
 ### Transaction Signing
 
 In general, when creating a new blockchain transaction, a wallet has to:
 
-1. Put together a transaction with relevant fields (source, target, amount, etc.)
-2. Sign the transaction, using the account private key.  This is done by Wallet Core.
+1. Put together a transaction with relevant fields (source, target, amount,
+   etc.)
+2. Sign the transaction, using the account private key. This is done by Wallet
+   Core.
 3. Send to a node for broadcasting to the blockchain network.
 
 Ethereum Transaction Signing
 
-Code example to fill in signer input parameters, perform signing, and retrieve encoded result:
+Code example to fill in signer input parameters, perform signing, and retrieve
+encoded result:
 
 ```kotlin
 val signerInput = Ethereum.SigningInput.newBuilder().apply {
@@ -87,4 +91,3 @@ val signerInput = Ethereum.SigningInput.newBuilder().apply {
 val output = AnySigner.sign(signerInput, CoinType.ETHEREUM, Ethereum.SigningOutput.parser())
 println("Signed transaction: \n${signerOutput.encoded.toByteArray().toHexString()}")
 ```
-

@@ -1,20 +1,22 @@
 # iOS Integration Guide
 
-Wallet Core is available on the iOS platform, it comes with *Swift* bindings.
-In this guide we show how to use it.
+Wallet Core is available on the iOS platform, it comes with _Swift_ bindings. In
+this guide we show how to use it.
 
-A sample application is available at: https://github.com/trustwallet/wallet-core/tree/master/samples/ios .
+A sample application is available at:
+https://github.com/trustwallet/wallet-core/tree/master/samples/ios .
 
 ## Prerequisites
 
-* [*CocoaPods*](https://cocoapods.org/).  If you don't have it, install it by
-`gem install cocoapods`.
-* *Xcode* toolchain
-* Wallet Core library
+- [_CocoaPods_](https://cocoapods.org/). If you don't have it, install it by
+  `gem install cocoapods`.
+- _Xcode_ toolchain
+- Wallet Core library
 
 ## Adding Library Dependency
 
-An easy way to add Wallet Core dependency to an iOS project is through *CocoaPods*, like this (the exact version may change in the future):
+An easy way to add Wallet Core dependency to an iOS project is through
+_CocoaPods_, like this (the exact version may change in the future):
 
 ```
   pod 'TrustWalletCore'
@@ -28,8 +30,9 @@ pod install
 
 ## Code Examples
 
-In the following sections we show code examples for some common funcions.
-Please refer to the [Wallet Usage Guide](wallet-core-usage.md) for detailed explanations.
+In the following sections we show code examples for some common funcions. Please
+refer to the [Wallet Usage Guide](wallet-core-usage.md) for detailed
+explanations.
 
 Accessing Wallet Core functionality requires one import statement:
 
@@ -49,7 +52,6 @@ let wallet = HDWallet(strength: 128, passphrase: "")
 let wallet = HDWallet(mnemonic: "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal", passphrase: "")
 ```
 
-
 ### Account Address Derivation
 
 Generating the Default Address for a Coin
@@ -67,18 +69,20 @@ let key = wallet.getKey(derivationPath: "m/44\'/60\'/1\'/0/0")   // m/44'/60'/1'
 let address = CoinType.ethereum.deriveAddress(privateKey: key)
 ```
 
-
 ### Transaction Signing
 
 In general, when creating a new blockchain transaction, a wallet has to:
 
-1. Put together a transaction with relevant fields (source, target, amount, etc.)
-2. Sign the transaction, using the account private key.  This is done by Wallet Core.
+1. Put together a transaction with relevant fields (source, target, amount,
+   etc.)
+2. Sign the transaction, using the account private key. This is done by Wallet
+   Core.
 3. Send to a node for broadcasting to the blockchain network.
 
 Ethereum Transaction Signing
 
-Code example to fill in signer input parameters, perform signing, and retrieve encoded result:
+Code example to fill in signer input parameters, perform signing, and retrieve
+encoded result:
 
 ```swift
 let signerInput = EthereumSigningInput.with {
