@@ -2,7 +2,8 @@
 
 ## Transactions
 
-All types of the transaction have the same [base](#base) format, and we can differ the actions using the [meta](#meta) object.
+All types of the transaction have the same [base](#base) format, and we can
+differ the actions using the [meta](#meta) object.
 
 ### Base
 
@@ -10,27 +11,29 @@ All types of the transaction have the same [base](#base) format, and we can diff
 - `from` - Transaction original sender.
 - `to` - Transaction original recipient.
 - `fee` - Transaction fee.
-- `coin` - Coin index from [SLIP-44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+- `coin` - Coin index from
+  [SLIP-44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
 - `date` - Time in Unix format at which a transaction is mined.
 - `block` - Block number at which transaction is included.
 - `memo` - Message included with a transaction.
-- `inputs ` - Input addresses for UTXO platforms.
-- `outputs ` - Output addresses for UTXO platforms.
+- `inputs` - Input addresses for UTXO platforms.
+- `outputs` - Output addresses for UTXO platforms.
 - `sequence` - Transaction nonce or sequence.
 - `status` - [Transaction status](#transaction-status).
 - `direction` - [Transaction direction](#transaction-direction).
 
-
 ##### Transaction Status:
+
 - `completed` - Completed and settled in the ledger.
 - `pending` - Pending in the mempool.
-- `error` - Smart contract failed to execute transaction or failed for any reason in the ledger.
+- `error` - Smart contract failed to execute transaction or failed for any
+  reason in the ledger.
 
 ##### Transaction Direction:
+
 - `outgoing` - The address owner is the sender of the transaction.
 - `incoming` - The address owner is the receiver of the transaction.
 - `yourself` - The address owner sends a transaction to yourself.
-
 
 e.g:
 
@@ -48,22 +51,28 @@ e.g:
 }
 ```
 
-
 ## Meta
 
-### Types 
+### Types
+
 Meta actions to specify a type of transfer.
 
-- [`transfer`](#transfer) - Basic transaction transfer from native currency platform.
-- [`token_transfer`](#token_transfer) - Transfer of native tokens (Stellar Tokens/TRC10).
-- [`native_token_transfer`](#native_token_transfer) - Transfer of non-native tokens (ERC20/TRC20).
-- [`collectible_transfer`](#collectible_transfer) - NFT tokens transfer (ERC721/ERC1155).
+- [`transfer`](#transfer) - Basic transaction transfer from native currency
+  platform.
+- [`token_transfer`](#token_transfer) - Transfer of native tokens (Stellar
+  Tokens/TRC10).
+- [`native_token_transfer`](#native_token_transfer) - Transfer of non-native
+  tokens (ERC20/TRC20).
+- [`collectible_transfer`](#collectible_transfer) - NFT tokens transfer
+  (ERC721/ERC1155).
 - [`token_swap`](#token_swap) - Exchange of two different tokens.
-- [`contract_call`](#contract_call) - Transaction from a contract execution/call.
-- [`any_action`](#any_action) - Generic action, can be used for stake like delegate, undeelegate and claim rewards action.
-
+- [`contract_call`](#contract_call) - Transaction from a contract
+  execution/call.
+- [`any_action`](#any_action) - Generic action, can be used for stake like
+  delegate, undeelegate and claim rewards action.
 
 ### Examples:
+
 #### Transfer
 
 Type: `transfer`
@@ -80,7 +89,7 @@ Type: `transfer`
 }
 ```
 
-####  Token Transfer
+#### Token Transfer
 
 Type: `token_transfer`
 
@@ -99,7 +108,7 @@ Type: `token_transfer`
 }
 ```
 
-####  Native Token Transfer
+#### Native Token Transfer
 
 Type: `native_token_transfer`
 
@@ -116,7 +125,7 @@ Type: `native_token_transfer`
 }
 ```
 
-####  Collectible Transfer
+#### Collectible Transfer
 
 Type: `collectible_transfer`
 
@@ -133,7 +142,7 @@ Type: `collectible_transfer`
 }
 ```
 
-####  Token Swap
+#### Token Swap
 
 Type: `token_swap`
 
@@ -159,7 +168,7 @@ Type: `token_swap`
 }
 ```
 
-####  Contract Call
+#### Contract Call
 
 Type: `contract_call`
 
@@ -167,14 +176,13 @@ Type: `contract_call`
 {
     "type": "contract_call",
     "metadata": {
-       "input": "0xfffdefefed",  
+       "input": "0xfffdefefed",
        "value": "1800000000000000000"
     }
 }
 ```
 
-
-####  Any Action
+#### Any Action
 
 Type: `any_action`
 
@@ -182,9 +190,9 @@ Type: `any_action`
 {
     "type": "any_action",
     "metadata": {
-       "coin": 60,  
+       "coin": 60,
        "title": "Place Order",
-       "key":  "place_order",     
+       "key":  "place_order",
        "token_id": "0x123" - optional
        "name": "Viktor Coin",
        "symbol": "VIK",
@@ -195,6 +203,7 @@ Type: `any_action`
 ```
 
 ##### Keys and Titles
+
 Keys mostly used to provide localized version on the clients by key.
 
 - `place_order`: Placer Order.
@@ -206,33 +215,30 @@ Keys mostly used to provide localized version on the clients by key.
 - `stake_delegate`: Stake Delegate.
 - `stake_claim_rewards`: Stake Claim Rewards.
 
-
 ## Staking
 
 ### Validators
 
 - `id` - Validator address.
 - `status` - [Validator status](#validator-status).
-- `info` - Details about the validator.
-	- `name` - Validator name.
-	- `description` - Validator description.
-	- `image` - Validator image to show on the client.
-	- `website` - Validator website. 
-- `details` - Stake details.
-	- `reward` - Estimate percent reward.
-		- `annual` - Estimate percent reward per year.
-	- `locktime` - Estimate percent reward.
-	- `minimum_amount ` - Estimate percent reward.
-	- `type ` - [Validator status](#validator-status).
+- `info` - Details about the validator. - `name` - Validator name. -
+  `description` - Validator description. - `image` - Validator image to show on
+  the client. - `website` - Validator website.
+- `details` - Stake details. - `reward` - Estimate percent reward. - `annual` -
+  Estimate percent reward per year. - `locktime` - Estimate percent reward. -
+  `minimum_amount` - Estimate percent reward. - `type` -
+  [Validator status](#validator-status).
 
 ##### Validator Status:
+
 - `active` - Validator is active for stake.
 - `pending` - Validator is pending for stake.
 
 ##### Validator Type:
+
 - `auto` - The address owner is staking only holding the coin.
 - `delegate` - The owner needs to delegate your balance.
-	
+
 e.g:
 
 ```json
@@ -240,10 +246,10 @@ e.g:
   "id": "cosmosvaloper1fhr7e04ct0zslmkzqt9smakg3sxrdve6ulclj2",
   "status": true,
   "info": {
-    "name": "POS Bakerz",
-    "description": "POS Bakerz is a staking company operating secure and efficient nodes for different Proof-of-Stake cryptocurrencies such as Cosmos Network, Tezos, IRISnet, Terra Money and others.",
+    "name": "Stakin",
+    "description": "Your Trusted Crypto Rewards",
     "image": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/cosmos/validators/assets/cosmosvaloper1fhr7e04ct0zslmkzqt9smakg3sxrdve6ulclj2/logo.png",
-    "website": "https://posbakerz.com/"
+    "website": "https://stakin.com"
   },
   "details": {
     "reward": {
@@ -258,15 +264,17 @@ e.g:
 
 ## Token
 
-
 - `name` - Token name
 - `symbol` - Token symbol
 - `decimals` - Number of decimal places
-- `tokenID` - Token unique id on the chain. e.g. (Dai token id on Ethereum - 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359)
-- `coin` - Coin index from [SLIP-44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
+- `tokenID` - Token unique id on the chain. e.g. (Dai token id on Ethereum -
+  0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359)
+- `coin` - Coin index from
+  [SLIP-44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
 - `type` - [Token type](#token-type).
 
 ##### Token Type:
+
 - `ERC20` - ERC20 token.
 - `BEP2` - BEP2 token.
 - `TRC10` - TRC10 token.
@@ -278,17 +286,15 @@ e.g:
 - `WAN20` - WAN20 token.
 - `TT20` - TT20 token.
 
-
 e.g:
 
 ```json
 {
-   "name": "Givly Coin",
-   "symbol": "GIV",
-   "decimals": 8,
-   "tokenID": "GIV-94E",
-   "coin": 714,
-   "type": "BEP2"
+  "name": "Givly Coin",
+  "symbol": "GIV",
+  "decimals": 8,
+  "tokenID": "GIV-94E",
+  "coin": 714,
+  "type": "BEP2"
 }
 ```
-
