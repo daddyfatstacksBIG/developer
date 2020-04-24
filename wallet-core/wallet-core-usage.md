@@ -36,7 +36,7 @@ interoperable with many other wallets: **BIP39** for recovery phrase,
 ### Creating a New Multi-Coin Wallet
 
 When a new wallet is created, a new seed (and thus recovery phrase) is chosen at
-random.  
+random.
 _After creation, the user has to be informed and guided to backup the recovery
 phrase._
 
@@ -208,7 +208,7 @@ print(output.encoded)
 ```
 
 It's worth to note that you can also calcuate fee and change manually (by using
-a `BitcoinTransactionPlan` struct)  
+a `BitcoinTransactionPlan` struct)
 Below is another real world Zcash
 [transparent transaction](https://explorer.zcha.in/transactions/ec9033381c1cc53ada837ef9981c03ead1c7c41700ff3a954389cfaddc949256)
 demonstrate this
